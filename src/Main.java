@@ -1,10 +1,26 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static String getUserRole() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your role(patient or doctor)");
+        System.out.println("Enter your role (patient or doctor):");
         String role = sc.next();
-        System.out.println("Enter patient's ID and patient's first name:");
+        role.toLowerCase();
+        while (true) {
+            if (role.equals("doctor") || role.equals("patient")) {
+                break;
+            }
+            System.out.println("Your role must be \"patient\" or \"doctor\": ");
+            role = sc.next();
+        }
+        return role;
+    }
+
+    public static void main(String[] args) {
+        if (getUserRole().equals("doctor")) {
+
+        } else {
+
+        }
     }
 }
