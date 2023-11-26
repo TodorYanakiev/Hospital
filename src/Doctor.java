@@ -3,6 +3,12 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String specialty;
+    public Doctor(int doctorID, String firstName, String lastName, String specialty){
+        setDoctorID(doctorID);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setSpecialty(specialty);
+    }
 
     public int getDoctorID() {
         return doctorID;

@@ -4,6 +4,13 @@ public class Patient {
     private String lastName;
     private int age;
 
+    public Patient(int patientID, String firstName, String lastName, int age) {
+        this.patientID = patientID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
     public int getPatientID() {
         return patientID;
     }
