@@ -4,6 +4,13 @@ public class Patient {
     private String lastName;
     private int age;
 
+    public Patient(int patientID, String firstName, String lastName, int age) {
+        this.patientID = patientID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
     public int getPatientID() {
         return patientID;
     }
@@ -34,5 +41,15 @@ public class Patient {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientID=" + patientID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

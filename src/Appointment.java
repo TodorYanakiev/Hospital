@@ -1,10 +1,21 @@
+import java.time.LocalDate;
+
 public class Appointment {
     private int appointmentID;
     private int patientID;
     private String typeOfExamination;
-    private String date;
+    private LocalDate date;
     private int time;
     private int doctorID;
+
+    public Appointment(int appointmentID, int patientID, String typeOfExamination, LocalDate date, int time, int doctorID) {
+        this.appointmentID = appointmentID;
+        this.patientID = patientID;
+        this.typeOfExamination = typeOfExamination;
+        this.date = date;
+        this.time = time;
+        this.doctorID = doctorID;
+    }
 
     public int getAppointmentID() {
         return appointmentID;
@@ -30,11 +41,11 @@ public class Appointment {
         this.typeOfExamination = typeOfExamination;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -52,5 +63,17 @@ public class Appointment {
 
     public void setDoctorID(int doctorID) {
         this.doctorID = doctorID;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "appointmentID=" + appointmentID +
+                ", patientID=" + patientID +
+                ", typeOfExamination='" + typeOfExamination + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", doctorID=" + doctorID +
+                '}';
     }
 }
