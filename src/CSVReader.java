@@ -1,5 +1,5 @@
-import javax.swing.*;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -40,5 +40,25 @@ public class CSVReader {
             System.out.println(e);
         }
         return patientList;
+    }
+
+    public List<Appointment> readAppointmentList(String fileName){
+        File file = new File(fileName);
+        List<Appointment> appointmentList = new ArrayList<>();
+        try{
+            Scanner sc = new Scanner(file);
+            sc.nextLine();
+            String[] text;
+            while(sc.hasNextLine()){
+                text = sc.nextLine().split(",");
+                appointmentList.add(new Appointment(Integer.parseInt(text[0]),Integer.parseInt(text[1]),text[2],
+                        LocalDate.parse(text[3]),Integer.parseInt(text[4]),Integer.parseInt(text[5])));
+            }
+            sc.close();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+        return appointmentList;
     }
 }
