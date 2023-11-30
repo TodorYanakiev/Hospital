@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class EntryAsPatient extends CSVReader {
 
-    public void Entry() {
+    public static void Entry() {
         CSVReader csvReader = new CSVReader();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your patient ID and your first name.");
