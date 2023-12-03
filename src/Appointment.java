@@ -8,7 +8,7 @@ public class Appointment {
     private int time;
     private int doctorID;
 
-    public Appointment(int appointmentID, int patientID, String typeOfExamination, LocalDate date, int time, int doctorID) {
+    public Appointment(int appointmentID,int patientID, String typeOfExamination, LocalDate date, int time, int doctorID) {
         this.appointmentID = appointmentID;
         this.patientID = patientID;
         this.typeOfExamination = typeOfExamination;
