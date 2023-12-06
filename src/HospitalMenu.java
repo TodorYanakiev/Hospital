@@ -6,7 +6,7 @@ public class HospitalMenu {
             EntryAsPatient.Entry();
         } else if (userRole.equals("doctor")) {
             System.out.println("You entered as doctor.");
-
+            EntryAsDoctor.Entry();
         }
     }
 }
