@@ -8,10 +8,8 @@ public class RoleSelector {
         role = role.toLowerCase();
         while (true) {
             if (role.equals("doctor")) {
-                System.out.println("You entered as doctor.");
                 return "doctor";
             } else if (role.equals("patient")) {
-                System.out.println("You entered as patient.");
                 return "patient";
             } else {
                 System.out.println("Incorrect input! Please reenter your role: ");
