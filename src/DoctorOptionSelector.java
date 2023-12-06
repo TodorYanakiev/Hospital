@@ -1,5 +1,5 @@
 public class DoctorOptionSelector {
-    public void selectOption(){
+    public void selectOption(int doctorID){
 
     }
 }
