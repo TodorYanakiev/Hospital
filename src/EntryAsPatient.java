@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class EntryAsPatient extends CSVReader {
+public class EntryAsPatient {
 
     public static void Entry() {
         CSVReader csvReader = new CSVReader();
