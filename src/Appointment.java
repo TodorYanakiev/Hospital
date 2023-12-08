@@ -79,6 +79,9 @@ public class Appointment {
 
     @Override
     public boolean equals(Object obj) {
+        if (this == null || obj == null){
+            return false;
+        }
         Appointment secondA = (Appointment) obj;
         return this.appointmentID == secondA.appointmentID && this.patientID == secondA.patientID &&
                 this.typeOfExamination.equals(secondA.typeOfExamination) && this.date.equals(secondA.date) && this.time == secondA.time &&
