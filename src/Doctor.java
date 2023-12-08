@@ -55,6 +55,9 @@ public class Doctor {
 
     @Override
     public boolean equals(Object obj) {
+        if (this == null || obj == null){
+            return false;
+        }
         if (!(obj instanceof Doctor)) {
             return false;
         }
