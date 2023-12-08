@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EntryAsPatient {
-
     public static void Entry() {
         System.out.println("Please enter your patient ID: ");
         Scanner sc = new Scanner(System.in);
@@ -40,7 +39,7 @@ public class EntryAsPatient {
 
     private static boolean isPatientExisting(int patientID, String patientFirstName) {
         CSVReader csvReader = new CSVReader();
-        List<Patient> patientList = csvReader.readPatientList("patient.csv");
+        List<Patient> patientList = csvReader.readPatientList("patients.csv");
         for (Patient patient : patientList) {
             if (patient.getPatientID() == patientID && patient.getFirstName().equals(patientFirstName)) return true;
         }
