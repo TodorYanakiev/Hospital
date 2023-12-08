@@ -18,4 +18,17 @@ public class CSVReaderTest {
         //THEN
         Assertions.assertEquals(doctorList,doctorListResult);
     }
+
+    @Test
+    public void readPatientListTest(){
+        //GIVEN
+        List<Patient> patientList = new ArrayList<>();
+        patientList.add(new Patient(1,"Maria","Petrova",25));
+        patientList.add(new Patient(2, "Ivan", "Ivanov", 34));
+        patientList.add(new Patient(3, "Konstantin", "Marinov", 18));
+        //WHEN
+        List<Patient> patientListResult = reader.readPatientList("patientsTest1.csv");
+        //THEN
+        Assertions.assertEquals(patientList,patientListResult);
+    }
 }
