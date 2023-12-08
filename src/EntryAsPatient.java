@@ -40,7 +40,7 @@ public class EntryAsPatient {
 
     private static boolean isPatientExisting(int patientID, String patientFirstName) {
         CSVReader csvReader = new CSVReader();
-        List<Patient> patientList = csvReader.readPatientList("patient.csv");
+        List<Patient> patientList = csvReader.readPatientList("patients.csv");
         for (Patient patient : patientList) {
             if (patient.getPatientID() == patientID && patient.getFirstName().equals(patientFirstName)) return true;
         }
