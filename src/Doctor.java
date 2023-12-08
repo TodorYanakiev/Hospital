@@ -1,9 +1,10 @@
-public class Doctor{
+public class Doctor {
     private int doctorID;
     private String firstName;
     private String lastName;
     private String specialty;
-    public Doctor(int doctorID, String firstName, String lastName, String specialty){
+
+    public Doctor(int doctorID, String firstName, String lastName, String specialty) {
         setDoctorID(doctorID);
         setFirstName(firstName);
         setLastName(lastName);
@@ -54,11 +55,11 @@ public class Doctor{
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Doctor)){
+        if (!(obj instanceof Doctor)) {
             return false;
         }
-        if (this.doctorID == ((Doctor) obj).doctorID && this.firstName == ((Doctor) obj).firstName && this.lastName == ((Doctor) obj).lastName
-                && this.specialty == ((Doctor) obj).specialty){
+        if (this.doctorID == ((Doctor) obj).doctorID && this.firstName.equals(((Doctor) obj).firstName) &&
+                this.lastName.equals(((Doctor) obj).lastName) && this.specialty.equals(((Doctor) obj).specialty)){
             return true;
         }
         return false;
