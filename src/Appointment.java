@@ -76,4 +76,12 @@ public class Appointment {
                 ", doctorID=" + doctorID +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Appointment secondA = (Appointment) obj;
+        return this.appointmentID == secondA.appointmentID && this.patientID == secondA.patientID &&
+                this.typeOfExamination.equals(secondA.typeOfExamination) && this.date.equals(secondA.date) && this.time == secondA.time &&
+                this.doctorID == secondA.doctorID;
+    }
 }
