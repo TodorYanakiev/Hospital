@@ -82,6 +82,9 @@ public class Appointment {
         if (this == null || obj == null){
             return false;
         }
+        if (!(obj instanceof Appointment)){
+            return false;
+        }
         Appointment secondA = (Appointment) obj;
         return this.appointmentID == secondA.appointmentID && this.patientID == secondA.patientID &&
                 this.typeOfExamination.equals(secondA.typeOfExamination) && this.date.equals(secondA.date) && this.time == secondA.time &&
