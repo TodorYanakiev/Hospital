@@ -33,7 +33,7 @@ public class CSVReader {
             String[] text;
             while(sc.hasNextLine()){
                 text = sc.nextLine().split(",");
-                patientList.add(new Patient(Integer.parseInt(text[0]),text[1],text[2],Integer.parseInt(text[3])));
+                patientList.add(new Patient(Integer.parseInt(text[0]), text[1],text[2],Integer.parseInt(text[3])));
             }
             sc.close();
         }catch (Exception e){
