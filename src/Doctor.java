@@ -1,4 +1,4 @@
-public class Doctor {
+public class Doctor{
     private int doctorID;
     private String firstName;
     private String lastName;
@@ -50,5 +50,17 @@ public class Doctor {
                 ", lastName='" + lastName + '\'' +
                 ", specialty='" + specialty + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Doctor)){
+            return false;
+        }
+        if (this.doctorID == ((Doctor) obj).doctorID && this.firstName == ((Doctor) obj).firstName && this.lastName == ((Doctor) obj).lastName
+                && this.specialty == ((Doctor) obj).specialty){
+            return true;
+        }
+        return false;
     }
 }
