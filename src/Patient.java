@@ -52,4 +52,11 @@ public class Patient {
                 ", age=" + age +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Patient secondP = (Patient) obj;
+        return this.patientID == secondP.patientID && this.firstName.equals(secondP.firstName) &&
+                this.lastName.equals(secondP.lastName) && this.age == secondP.age;
+    }
 }
