@@ -1,0 +1,7 @@
+appointment_id, patient_id, type_of_examination, date, time, doctor_id
+2,3,procedure,2024-01-17,930,6
+1,1,initial,2023-11-27,1030,1
+2,3,secondary,2021-09-11,0900,2
+3,7,initial,2021-12-03,1305,1
+2,3,procedure,2024-01-17,930,6
+2,3,procedure,2024-01-17,930,6
