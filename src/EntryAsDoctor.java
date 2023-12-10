@@ -8,9 +8,9 @@ public class EntryAsDoctor {
         int doctorID = getDoctorID(sc);
         System.out.println("Please enter your first name(use Capital letter): ");
         String doctorFirstName = sc.next();
-        DoctorOptionSelector optionSelector = new DoctorOptionSelector();
+        DoctorOptionSelector optionSelector = new DoctorOptionSelector(doctorID, "appointments.csv");
         if (isDoctorExisting(doctorID, doctorFirstName)) {
-            optionSelector.selectOption(doctorID);
+            optionSelector.selectOption();
         } else {
             while (!isDoctorExisting(doctorID, doctorFirstName)) {
                 System.out.println("There is no such a doctor! Enter your doctor ID again:");
@@ -18,7 +18,7 @@ public class EntryAsDoctor {
                 System.out.println("Please enter your first name again(use Capital letter): ");
                 doctorFirstName = sc.next();
             }
-            optionSelector.selectOption(doctorID);
+            optionSelector.selectOption();
         }
     }
 
