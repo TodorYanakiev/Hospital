@@ -3,7 +3,8 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String specialty;
-    public Doctor(int doctorID, String firstName, String lastName, String specialty){
+
+    public Doctor(int doctorID, String firstName, String lastName, String specialty) {
         setDoctorID(doctorID);
         setFirstName(firstName);
         setLastName(lastName);
@@ -50,5 +51,20 @@ public class Doctor {
                 ", lastName='" + lastName + '\'' +
                 ", specialty='" + specialty + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == null || obj == null){
+            return false;
+        }
+        if (!(obj instanceof Doctor)) {
+            return false;
+        }
+        if (this.doctorID == ((Doctor) obj).doctorID && this.firstName.equals(((Doctor) obj).firstName) &&
+                this.lastName.equals(((Doctor) obj).lastName) && this.specialty.equals(((Doctor) obj).specialty)){
+            return true;
+        }
+        return false;
     }
 }
