@@ -6,7 +6,33 @@ import java.util.List;
 
 public class CSVWriterTest {
     @Test
-    public void addDoctorTestCorrectParameters(){
+    public void addPatientTestGivenCorrectParameters(){
+        //GIVEN
+        Patient patient1 = new Patient(IDMaker.makePatientID("patientsTest1.csv"),"Yavor", "Radoslavov",89);
+        CSVReader reader = new CSVReader();
+        //WHEN
+        CSVWriter.addPatient(patient1,new File("patientsTest1.csv"));
+        List<Patient> patientList = reader.readPatientList("patientsTest1.csv");
+        //THEN
+        boolean isPatientInTheList = patientList.stream().anyMatch(patient -> patient.equals(patient1));
+        Assertions.assertTrue(isPatientInTheList);
+    }
+
+    @Test
+    public void addPatientTestGivenNull(){
+        //GIVEN
+        Patient patient1 = null;
+        CSVReader reader = new CSVReader();
+        //WHEN
+        CSVWriter.addPatient(patient1,new File("patientsTest2.csv"));
+        List<Patient> patientList = reader.readPatientList("patientsTest2.csv");
+        //THEN
+        boolean isPatientInTheList = patientList.stream().anyMatch(patient -> patient.equals(patient1));
+        Assertions.assertFalse(isPatientInTheList);
+    }
+
+    @Test
+    public void addDoctorTestGivenCorrectParameters(){
         //GIVEN
         Doctor doctor1 = new Doctor(IDMaker.makeDoctorID("doctorsTest1.csv"),"Nikolay","Simeonov","cardiology");
         CSVReader reader = new CSVReader();
