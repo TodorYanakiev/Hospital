@@ -15,7 +15,7 @@ public class CSVReaderTest {
         doctorList.add(new Doctor(2,"Tsvetomira","Borisova","gynecology"));
         doctorList.add(new Doctor(3,"Krasen","Borislavov","anesthesiology"));
         //WHEN
-        List<Doctor> doctorListResult = reader.readDoctorList("doctorsTest1.csv");
+        List<Doctor> doctorListResult = reader.readDoctorList("doctorsTest3.csv");
         //THEN
         Assertions.assertEquals(doctorList,doctorListResult);
     }
@@ -28,7 +28,7 @@ public class CSVReaderTest {
         patientList.add(new Patient(2, "Ivan", "Ivanov", 34));
         patientList.add(new Patient(3, "Konstantin", "Marinov", 18));
         //WHEN
-        List<Patient> patientListResult = reader.readPatientList("patientsTest1.csv");
+        List<Patient> patientListResult = reader.readPatientList("patientsTest3.csv");
         //THEN
         Assertions.assertEquals(patientList,patientListResult);
     }
@@ -41,7 +41,7 @@ public class CSVReaderTest {
         appointmentsList.add(new Appointment(2,3,"secondary",(LocalDate.parse("2021-09-11")),900,2));
         appointmentsList.add(new Appointment(3,7,"initial",(LocalDate.parse("2021-12-03")),1305,1));
         //WHEN
-        List<Appointment> appointmentsListResult = reader.readAppointmentList("appointmentsTest1.csv");
+        List<Appointment> appointmentsListResult = reader.readAppointmentList("appointmentsTest3.csv");
         //THEN
         Assertions.assertEquals(appointmentsList,appointmentsListResult);
 

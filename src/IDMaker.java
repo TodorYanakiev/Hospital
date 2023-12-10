@@ -1,6 +1,3 @@
-import javax.print.Doc;
-import java.io.File;
-import java.util.Comparator;
 import java.util.List;
 public class IDMaker {
     public static int makeAppointmentID(){
