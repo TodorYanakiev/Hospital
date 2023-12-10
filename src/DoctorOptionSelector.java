@@ -3,11 +3,15 @@ import java.util.Scanner;
 
 public class DoctorOptionSelector {
     private String appointmentFileName;
+    private String doctorFileName;
+    private String patientFileName;
 
-    public DoctorOptionSelector(String appointmentFileName) {
-
+    public DoctorOptionSelector(String appointmentFileName, String doctorFileName, String patientFileName) {
         this.appointmentFileName = appointmentFileName;
+        this.doctorFileName = doctorFileName;
+        this.patientFileName = patientFileName;
     }
+
 
     public void selectOption(int doctorID) {
         Scanner sc = new Scanner(System.in);
@@ -42,7 +46,10 @@ public class DoctorOptionSelector {
     }
 
     public void showAllAppointments(int doctorID) {
-
+        List<Appointment> appointmentList = AppointmentsByDoctorVisualization.getAppointmentsForDoctor(doctorID,this.appointmentFileName);
+        System.out.println("All appointments for doctor with ID = " + doctorID + " are: ");
+        appointmentList.forEach(System.out::println);
+        System.out.println();
     }
 
     public void sortAllAppointments(int doctorID) {

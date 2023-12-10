@@ -8,7 +8,8 @@ public class EntryAsDoctor {
         int doctorID = getDoctorID(sc);
         System.out.println("Please enter your first name(use Capital letter): ");
         String doctorFirstName = sc.next();
-        DoctorOptionSelector optionSelector = new DoctorOptionSelector("appointments.csv");
+        DoctorOptionSelector optionSelector =
+                new DoctorOptionSelector("appointments.csv","doctors.csv","patients.csv");
         if (isDoctorExisting(doctorID, doctorFirstName)) {
             optionSelector.selectOption(doctorID);
         } else {
