@@ -7,6 +7,13 @@ public class IDMaker {
         return highestID;
     }
 
+    public static int makeAppointmentID(String fileName){
+        CSVReader reader = new CSVReader();
+        List<Appointment> appointmentList = reader.readAppointmentList(fileName);
+        int highestID = appointmentList.stream().mapToInt(Appointment::getAppointmentID).max().orElse(0) + 1;
+        return highestID;
+    }
+
     public static int makePatientID(){
         CSVReader reader = new CSVReader();
         List<Patient> patientList = reader.readPatientList("patients.csv");
@@ -14,9 +21,23 @@ public class IDMaker {
         return highestID;
     }
 
+    public static int makePatientID(String fileName){
+        CSVReader reader = new CSVReader();
+        List<Patient> patientList = reader.readPatientList(fileName);
+        int highestID = patientList.stream().mapToInt(Patient::getPatientID).max().orElse(0) + 1;
+        return highestID;
+    }
+
     public static int makeDoctorID(){
         CSVReader reader = new CSVReader();
         List<Doctor> doctorList = reader.readDoctorList("doctors.csv");
+        int highestID = doctorList.stream().mapToInt(Doctor::getDoctorID).max().orElse(0) + 1;
+        return highestID;
+    }
+
+    public static int makeDoctorID(String fileName){
+        CSVReader reader = new CSVReader();
+        List<Doctor> doctorList = reader.readDoctorList(fileName);
         int highestID = doctorList.stream().mapToInt(Doctor::getDoctorID).max().orElse(0) + 1;
         return highestID;
     }
