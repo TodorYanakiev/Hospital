@@ -46,7 +46,7 @@ public class DoctorOptionSelector {
     }
 
     public void showAllAppointments(int doctorID) {
-        List<Appointment> appointmentList = AppointmentsByDoctorVisualization.getAppointmentsForDoctor(doctorID,this.appointmentFileName);
+        List<Appointment> appointmentList = AppointmentsForDoctorVisualization.getAppointmentsForDoctor(doctorID,this.appointmentFileName);
         System.out.println("All appointments for doctor with ID = " + doctorID + " are: ");
         appointmentList.forEach(System.out::println);
         System.out.println();

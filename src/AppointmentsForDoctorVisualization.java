@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AppointmentsByDoctorVisualization {
+public class AppointmentsForDoctorVisualization {
     public static List<Appointment> getAppointmentsForDoctor(int doctorID,String appointmentsFileName){
         CSVReader reader = new CSVReader();
         List<Appointment> appointmentList = reader.readAppointmentList(appointmentsFileName);
