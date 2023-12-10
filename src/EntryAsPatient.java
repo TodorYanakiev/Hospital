@@ -8,7 +8,7 @@ public class EntryAsPatient {
         int patientID = getPatientID(sc);
         System.out.println("Please enter your first name(use Capital letter): ");
         String patientFirstName = sc.next();
-        DoctorOptionSelector optionSelector = new DoctorOptionSelector();
+        PatientOptionSelector optionSelector = new PatientOptionSelector();
         if (isPatientExisting(patientID, patientFirstName)) {
             optionSelector.selectOption(patientID);
         } else {
