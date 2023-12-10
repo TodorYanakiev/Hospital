@@ -8,10 +8,3 @@ appointment_id, patient_id, type_of_examination, date, time, doctor_id
 7,1,initial,2021-12-03,1305,1
 8,2,consultation,2023-11-27,1030,2
 9,3,procedure,2021-09-11,0900,3
-10,1,secondary,2021-12-03,1305,1
-11,2,initial,2021-12-03,1305,2
-12,3,consultation,2021-12-03,1305,3
-13,1,procedure,2021-12-03,1305,1
-14,2,secondary,2021-12-03,1305,2
-15,3,initial,2021-12-03,1305,3
-16,1,consultation,2021-12-03,1305,1
