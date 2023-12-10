@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EntryAsPatient {
-
     public static void Entry() {
         System.out.println("Please enter your patient ID: ");
         Scanner sc = new Scanner(System.in);
