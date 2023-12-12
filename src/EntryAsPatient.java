@@ -12,7 +12,7 @@ public class EntryAsPatient {
         if (isPatientExisting(patientID, patientFirstName)) {
             optionSelector.selectOption(patientID);
         } else {
-            while (!isPatientExisting(patientID,patientFirstName)){
+            while (!isPatientExisting(patientID, patientFirstName)) {
                 System.out.println("There is no such a patient! Enter your patient ID again:");
                 patientID = getPatientID(sc);
                 System.out.println("Please enter your first name again(use Capital letter): ");
@@ -22,14 +22,14 @@ public class EntryAsPatient {
         }
     }
 
-    private static int getPatientID(Scanner sc){
+    private static int getPatientID(Scanner sc) {
         String textPatientID = sc.next();
         int patientID;
         while (true) {
-            if (textPatientID.matches("^\\d+$")){
+            if (textPatientID.matches("^\\d+$")) {
                 patientID = Integer.parseInt(textPatientID);
                 break;
-            }else {
+            } else {
                 System.out.println("The patient ID must be a whole number! Enter the ID again: ");
                 textPatientID = sc.next();
             }

@@ -56,10 +56,10 @@ public class Patient {
     @Override
     public boolean equals(Object obj) {
         Patient secondP = (Patient) obj;
-        if (this == null || secondP == null){
+        if (this == null || secondP == null) {
             return false;
         }
-        if (!(obj instanceof Patient)){
+        if (!(obj instanceof Patient)) {
             return false;
         }
         return this.patientID == secondP.patientID && this.firstName.equals(secondP.firstName) &&

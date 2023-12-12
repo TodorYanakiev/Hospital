@@ -12,9 +12,7 @@ public class DoctorOptionSelector {
         this.patientFileName = patientFileName;
     }
 
-
     public void selectOption(int doctorID) {
-        //TODO gives NoSuchElementException
         Scanner sc = new Scanner(System.in);
         String option;
         do {
@@ -48,14 +46,14 @@ public class DoctorOptionSelector {
     }
 
     public void showAllAppointments(int doctorID) {
-        List<Appointment> appointmentList = AppointmentsForDoctorVisualization.getAppointmentsForDoctor(doctorID,this.appointmentFileName);
+        List<Appointment> appointmentList = AppointmentsForDoctorVisualization.getAppointmentsForDoctor(doctorID, this.appointmentFileName);
         System.out.println("All appointments for doctor with ID = " + doctorID + " are: ");
         appointmentList.forEach(System.out::println);
         System.out.println();
     }
 
     public void sortAllAppointments(int doctorID) {
-        AppointmentsSorter sorter = new AppointmentsSorter(this.appointmentFileName,this.doctorFileName,this.patientFileName,doctorID);
+        AppointmentsSorter sorter = new AppointmentsSorter(this.appointmentFileName, this.doctorFileName, this.patientFileName, doctorID);
         List<Appointment> appointmentList = sorter.getSortedList();
         appointmentList.forEach(System.out::println);
         System.out.println();

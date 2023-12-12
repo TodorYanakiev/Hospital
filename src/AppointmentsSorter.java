@@ -24,7 +24,6 @@ public class AppointmentsSorter {
         } else {
             sortedAppointmentList = makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByPatientID(), sc);
         }
-        //sc.close();
         return sortedAppointmentList;
     }
 

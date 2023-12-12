@@ -19,6 +19,7 @@ public class ScheduleNewAppointment {
             System.out.println("Error writing to appointments.csv.");
         }
     }
+
     private static int searchForDoctorId() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter doctorId: ");

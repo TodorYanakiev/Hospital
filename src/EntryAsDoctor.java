@@ -9,7 +9,7 @@ public class EntryAsDoctor {
         System.out.println("Please enter your first name: ");
         String doctorFirstName = sc.next();
         DoctorOptionSelector optionSelector =
-                new DoctorOptionSelector("appointments.csv","doctors.csv","patients.csv");
+                new DoctorOptionSelector("appointments.csv", "doctors.csv", "patients.csv");
         if (isDoctorExisting(doctorID, doctorFirstName)) {
             optionSelector.selectOption(doctorID);
         } else {
@@ -42,7 +42,8 @@ public class EntryAsDoctor {
         CSVReader csvReader = new CSVReader();
         List<Doctor> doctorList = csvReader.readDoctorList("doctors.csv");
         for (Doctor doctor : doctorList) {
-            if (doctor.getDoctorID() == doctorID && doctor.getFirstName().equalsIgnoreCase(doctorFirstName)) return true;
+            if (doctor.getDoctorID() == doctorID && doctor.getFirstName().equalsIgnoreCase(doctorFirstName))
+                return true;
         }
         return false;
     }

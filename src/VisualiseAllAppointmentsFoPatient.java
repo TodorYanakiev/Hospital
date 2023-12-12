@@ -7,6 +7,7 @@ import java.util.List;
 public class VisualiseAllAppointmentsFoPatient {
     private static final String APPOINTMENTS_FILE = "appointments.csv";
     private static final String DOCTORS_FILE = "doctors.csv";
+
     public static void visualizePatientAppointments(int patientId) {
         try {
             BufferedReader appointmentsReader = new BufferedReader(new FileReader(APPOINTMENTS_FILE));

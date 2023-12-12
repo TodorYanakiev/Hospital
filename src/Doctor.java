@@ -55,14 +55,14 @@ public class Doctor {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == null || obj == null){
+        if (this == null || obj == null) {
             return false;
         }
         if (!(obj instanceof Doctor)) {
             return false;
         }
         if (this.doctorID == ((Doctor) obj).doctorID && this.firstName.equals(((Doctor) obj).firstName) &&
-                this.lastName.equals(((Doctor) obj).lastName) && this.specialty.equals(((Doctor) obj).specialty)){
+                this.lastName.equals(((Doctor) obj).lastName) && this.specialty.equals(((Doctor) obj).specialty)) {
             return true;
         }
         return false;
