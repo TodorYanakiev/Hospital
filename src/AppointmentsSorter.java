@@ -28,11 +28,6 @@ public class AppointmentsSorter {
         return sortedAppointmentList;
     }
 
-    private List<Appointment> getSortedAppointmentListByPatientName() {
-        return new ArrayList<>();
-        //
-    }
-
     private List<Appointment> getSortedAppointmentListByPatientID() {
         CSVReader reader = new CSVReader();
         List<Appointment> allAppointmentsList = reader.readAppointmentList(this.appointmentFileName);
@@ -84,28 +79,23 @@ public class AppointmentsSorter {
         }
     }
 
-    private List<Patient> getPatientListFromAppointments() {
+    private List<Appointment> getSortedAppointmentListByPatientName() {
         CSVReader reader = new CSVReader();
-        List<Appointment> appointmentList = reader.readAppointmentList(this.appointmentFileName);
-        List<Integer> patientIDList = appointmentList.stream().map(Appointment::getPatientID).toList();
-        List<Patient> patientList = reader.readPatientList(this.patientFileName);
-        List<Patient> filteredPatientList = new ArrayList<>();
-        for (int patientID : patientIDList) {
-            for (Patient patient : patientList) {
-                if (patient.getPatientID() == patientID && !filteredPatientList.contains(patient)) {
-                    filteredPatientList.add(patient);
-                }
-            }
-        }
-        return filteredPatientList;
+        List<Appointment> allAppointmentsList = reader.readAppointmentList(this.appointmentFileName);
+        List<Appointment> currentDoctorAppointmentsList = allAppointmentsList.stream()
+                .filter(appointment -> appointment.getDoctorID() == this.doctorID).toList();
+        Comparator<Appointment> compareByPatientName = Comparator.comparing(appointment -> getPatientName(appointment.getPatientID()));
+        List<Appointment> sortedCurrentDoctorAppointmentsList = currentDoctorAppointmentsList.stream().sorted(compareByPatientName).toList();
+        return sortedCurrentDoctorAppointmentsList;
     }
 
-    private String getPatientFullName(int patientId, List<Patient> patientList) {
-        for (Patient patient : patientList) {
-            if (patient.getPatientID() == patientId) {
-                return patient.getFirstName() + "" + patient.getLastName();
-            }
-        }
-        return "";
+    private String getPatientName(int patientID) {
+        CSVReader reader = new CSVReader();
+        List<Patient> allPatientsList = reader.readPatientList(this.patientFileName);
+        Optional<Patient> patient = allPatientsList.stream()
+                .filter(p -> p.getPatientID() == patientID)
+                .findFirst();
+
+        return patient.map(p -> p.getFirstName() + " " + p.getLastName()).orElse("");
     }
 }
