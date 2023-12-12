@@ -14,71 +14,77 @@ public class AppointmentsSorter {
     }
 
     public List<Appointment> getSortedList() {
-        String option = getSortingOption();
-        List<Appointment> patientList = new ArrayList<>();
-        if (option.equalsIgnoreCase("1")){
-            return makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByPatientName());
-        } else if (option.equalsIgnoreCase("2")) {
-            return makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByDateTime());
+        Scanner sc = new Scanner(System.in);
+        String option = getSortingOption(sc);
+        List<Appointment> sortedAppointmentList;
+        if (option.equals("1")) {
+            sortedAppointmentList = makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByPatientName(), sc);
+        } else if (option.equals("2")) {
+            sortedAppointmentList = makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByDateTime(), sc);
+        } else {
+            sortedAppointmentList = makeAppointmentListIncreasingOrDecreasingOrder(getSortedAppointmentListByPatientID(), sc);
         }
-        return patientList;
+        sc.close();
+        return sortedAppointmentList;
     }
 
-    public List<Appointment> getSortedAppointmentListByPatientName() {
+    private List<Appointment> getSortedAppointmentListByPatientName() {
         return new ArrayList<>();
         //
     }
 
-    public List<Appointment> getSortedAppointmentListByDateTime(){
+    private List<Appointment> getSortedAppointmentListByPatientID() {
+        CSVReader reader = new CSVReader();
+        List<Appointment> allAppointmentsList = reader.readAppointmentList(this.appointmentFileName);
+        List<Appointment> currentDoctorAppointmentsList = allAppointmentsList.stream()
+                .filter(appointment -> appointment.getDoctorID() == this.doctorID).toList();
+        List<Appointment> sortedCurrentDoctorAppointmentsList = currentDoctorAppointmentsList.stream()
+                .sorted(Comparator.comparing(Appointment::getPatientID)).toList();
+        return sortedCurrentDoctorAppointmentsList;
+    }
+
+    private List<Appointment> getSortedAppointmentListByDateTime() {
         CSVReader reader = new CSVReader();
         List<Appointment> allAppointmentsList = reader.readAppointmentList(this.appointmentFileName);
         List<Appointment> currentDoctorAppointmentsList = allAppointmentsList.stream()
                 .filter(appointment -> appointment.getDoctorID() == this.doctorID).toList();
         Comparator<Appointment> compareByDateAndTime = Comparator.comparing(Appointment::getDate).thenComparing(Appointment::getTime);
-        List<Appointment> filteredCurrentDoctorAppointmentsList = currentDoctorAppointmentsList.stream().sorted(compareByDateAndTime).toList();
-        return filteredCurrentDoctorAppointmentsList;
+        List<Appointment> sortedCurrentDoctorAppointmentsList = currentDoctorAppointmentsList.stream().sorted(compareByDateAndTime).toList();
+        return sortedCurrentDoctorAppointmentsList;
     }
 
-    private List<Appointment> makeAppointmentListIncreasingOrDecreasingOrder(List<Appointment> appointmentList) {
-        Scanner sc = new Scanner(System.in);
+    private List<Appointment> makeAppointmentListIncreasingOrDecreasingOrder(List<Appointment> appointmentList, Scanner sc) {
         System.out.println("Select order - increasing or decreasing: ");
-        String order = sc.next();
+        String order = sc.nextLine();
         while (true) {
             if (order.equalsIgnoreCase("increasing")) {
-                sc.close();
                 return appointmentList;
             } else if (order.equalsIgnoreCase("decreasing")) {
                 List<Appointment> reversedAppointmentList = new ArrayList<>(appointmentList);
                 Collections.reverse(reversedAppointmentList);
-                sc.close();
                 return reversedAppointmentList;
             } else {
                 System.out.println("Invalid order! Enter again(increasing or decreasing): ");
-                order = sc.next();
+                order = sc.nextLine();
             }
         }
     }
 
-    private String getSortingOption() {
+    private String getSortingOption(Scanner sc) {
         System.out.println("Sort appointments by(enter only the number): ");
         System.out.println("1. by patient name   2. by date   3. patient ID");
-        Scanner sc = new Scanner(System.in);
-        String option = sc.next();
+        String option = sc.nextLine();
         while (true) {
-            if (option.equals("1")) {
-                return option;
-            } else if (option.equals("2")) {
-                return option;
-            } else if (option.equals("3")) {
+            if (option.equals("1") || option.equals("2") || option.equals("3")) {
                 return option;
             } else {
                 System.out.println("Invalid option! Enter again: ");
-                option = sc.next();
+                option = sc.nextLine();
             }
         }
     }
 
-    public List<Patient> getPatientListFromAppointments() {
+    private List<Patient> getPatientListFromAppointments() {
         CSVReader reader = new CSVReader();
         List<Appointment> appointmentList = reader.readAppointmentList(this.appointmentFileName);
         List<Integer> patientIDList = appointmentList.stream().map(Appointment::getPatientID).toList();

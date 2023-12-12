@@ -9,3 +9,4 @@ appointment_id, patient_id, type_of_examination, date, time, doctor_id
 8,3,procedure,2024-01-17,930,6
 9,3,procedure,2024-01-17,930,6
 10,3,procedure,2024-01-17,930,6
+11,3,procedure,2024-01-17,930,6

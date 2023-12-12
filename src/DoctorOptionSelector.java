@@ -23,7 +23,7 @@ public class DoctorOptionSelector {
             System.out.println("2. Sort  all appointments for a doctor.");
             System.out.println("3. Group patients.");
             System.out.println("4. Exit.");
-            option = sc.next();
+            option = sc.nextLine();
             while (true) {
                 if (option.equals("1")) {
                     int newID = changeDoctorID(doctorID);
@@ -40,7 +40,7 @@ public class DoctorOptionSelector {
                     break;
                 } else {
                     System.out.println("Invalid input! Write only the number:");
-                    option = sc.next();
+                    option = sc.nextLine();
                 }
             }
         } while (!option.equals("4"));
@@ -54,7 +54,10 @@ public class DoctorOptionSelector {
     }
 
     public void sortAllAppointments(int doctorID) {
-
+        AppointmentsSorter sorter = new AppointmentsSorter(this.appointmentFileName,this.doctorFileName,this.patientFileName,doctorID);
+        List<Appointment> appointmentList = sorter.getSortedList();
+        appointmentList.forEach(System.out::println);
+        System.out.println();
     }
 
     public void groupPatients(int doctorID) {
@@ -64,7 +67,7 @@ public class DoctorOptionSelector {
     private int changeDoctorID(int doctorID) {
         System.out.println("Do you want to change the doctor ID(yes/no):");
         Scanner sc = new Scanner(System.in);
-        String answer = sc.next();
+        String answer = sc.nextLine();
         while (true) {
             if (answer.equalsIgnoreCase("yes")) {
                 return getNewDoctorID(sc, doctorID);
@@ -72,7 +75,7 @@ public class DoctorOptionSelector {
                 return doctorID;
             } else {
                 System.out.println("Invalid answer! Enter yes or no:");
-                answer = sc.next();
+                answer = sc.nextLine();
             }
         }
     }
