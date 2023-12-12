@@ -80,13 +80,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\patientsTest2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\patientsTest3.csv">
           <value>
             <Attribute>

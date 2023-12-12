@@ -37,6 +37,7 @@ public class DoctorOptionSelector {
                     groupPatients(doctorID);
                     break;
                 } else if (option.equals("4")) {
+                    System.out.println("Exiting hospital software...");
                     break;
                 } else {
                     System.out.println("Invalid input! Write only the number:");
