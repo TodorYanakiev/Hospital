@@ -48,17 +48,17 @@ public class AppointmentsSorter {
     }
 
     private List<Appointment> makeAppointmentListIncreasingOrDecreasingOrder(List<Appointment> appointmentList, Scanner sc) {
-        System.out.println("Select order - increasing or decreasing: ");
+        System.out.println("Select order - ascending or descending: ");
         String order = sc.nextLine();
         while (true) {
-            if (order.equalsIgnoreCase("increasing")) {
+            if (order.equalsIgnoreCase("ascending")) {
                 return appointmentList;
-            } else if (order.equalsIgnoreCase("decreasing")) {
+            } else if (order.equalsIgnoreCase("descending")) {
                 List<Appointment> reversedAppointmentList = new ArrayList<>(appointmentList);
                 Collections.reverse(reversedAppointmentList);
                 return reversedAppointmentList;
             } else {
-                System.out.println("Invalid order! Enter again(increasing or decreasing): ");
+                System.out.println("Invalid order! Enter again(ascending or descending): ");
                 order = sc.nextLine();
             }
         }
