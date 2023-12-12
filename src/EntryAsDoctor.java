@@ -6,7 +6,7 @@ public class EntryAsDoctor {
         System.out.println("Please enter your doctor ID: ");
         Scanner sc = new Scanner(System.in);
         int doctorID = getDoctorID(sc);
-        System.out.println("Please enter your first name(use Capital letter): ");
+        System.out.println("Please enter your first name: ");
         String doctorFirstName = sc.next();
         DoctorOptionSelector optionSelector =
                 new DoctorOptionSelector("appointments.csv","doctors.csv","patients.csv");
@@ -16,7 +16,7 @@ public class EntryAsDoctor {
             while (!isDoctorExisting(doctorID, doctorFirstName)) {
                 System.out.println("There is no such a doctor! Enter your doctor ID again:");
                 doctorID = getDoctorID(sc);
-                System.out.println("Please enter your first name again(use Capital letter): ");
+                System.out.println("Please enter your first name again: ");
                 doctorFirstName = sc.next();
             }
             optionSelector.selectOption(doctorID);
@@ -42,7 +42,7 @@ public class EntryAsDoctor {
         CSVReader csvReader = new CSVReader();
         List<Doctor> doctorList = csvReader.readDoctorList("doctors.csv");
         for (Doctor doctor : doctorList) {
-            if (doctor.getDoctorID() == doctorID && doctor.getFirstName().equals(doctorFirstName)) return true;
+            if (doctor.getDoctorID() == doctorID && doctor.getFirstName().equalsIgnoreCase(doctorFirstName)) return true;
         }
         return false;
     }
