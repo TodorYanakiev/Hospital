@@ -1,17 +1,17 @@
 appointment_id, patient_id, type_of_examination, date, time, doctor_id
 1,1,procedure,2023-11-27,1030,1
 2,2,secondary,2021-09-11,0900,2
-3,3,initial,2021-12-03,1305,3
-4,1,consultation,2021-12-03,1305,1
-5,2,procedure,2021-12-03,1305,2
+3,3,initial,2021-12-03,1135,3
+4,1,consultation,2021-12-03,1300,1
+5,2,procedure,2021-12-03,1345,2
 6,3,secondary,2021-12-03,1305,3
-7,1,initial,2021-12-03,1305,1
+7,1,initial,2021-12-03,1125,1
 8,2,consultation,2023-11-27,1030,2
 9,3,procedure,2021-09-11,0900,3
-10,1,secondary,2021-12-03,1305,1
-11,2,initial,2021-12-03,1305,2
-12,3,consultation,2021-12-03,1305,3
-13,1,procedure,2021-12-03,1305,1
-14,2,secondary,2021-12-03,1305,2
+10,1,secondary,2021-12-03,0905,1
+11,2,initial,2021-08-03,1650,2
+12,3,consultation,2021-12-03,0800,3
+13,1,procedure,2021-11-03,1015,1
+14,2,secondary,2021-12-03,1145,2
 15,3,initial,2021-12-03,1305,3
-16,1,consultation,2021-12-03,1305,1
+16,1,consultation,2025-12-03,1305,1
