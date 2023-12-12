@@ -14,6 +14,7 @@ public class DoctorOptionSelector {
 
 
     public void selectOption(int doctorID) {
+        //TODO gives NoSuchElementException
         Scanner sc = new Scanner(System.in);
         String option;
         do {
