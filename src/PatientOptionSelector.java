@@ -27,15 +27,14 @@ public class PatientOptionSelector {
                         schedulingNewAppointmentMethod(patient);
                         break;
                     } else if (option.equals("2")) {
-                        patientID = Integer.parseInt(sc.nextLine());
                         visualisingAllAppointmentsForPatientMethod(patientID);
                         break;
                     } else if (option.equals("3")) {
-                        int appointmentID = Integer.parseInt(sc.nextLine());
+                        System.out.println("Please enter appointmentID: ");
+                        int appointmentID = getAppointmentID(sc);
                         changingDateAndTimeForPatientMethod(appointmentID);
                         break;
                     } else if (option.equals("4")) {
-                        patientID = Integer.parseInt(sc.nextLine());
                         cancelingAppointmentMethod(patientID);
                         break;
                     } else if (option.equals(("5"))) {
@@ -67,5 +66,19 @@ public class PatientOptionSelector {
     public void schedulingNewAppointmentMethod(Patient patient) {
         ScheduleNewAppointment scheduleNewAppointment = new ScheduleNewAppointment(appointmentFileName);
         scheduleNewAppointment.scheduleAppointment(patient);
+    }
+    public int getAppointmentID(Scanner sc) {
+        int appointmentId;
+        String textAppointmentID = sc.next();
+        while (true) {
+            if (textAppointmentID.matches("^\\d+$")) {
+                appointmentId = Integer.parseInt(textAppointmentID);
+                break;
+            } else {
+                System.out.println("Invalid input, enter appointmentID again: ");
+                textAppointmentID = sc.next();
+            }
+        }
+        return appointmentId;
     }
 }
