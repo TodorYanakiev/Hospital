@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DoctorOptionSelector {
@@ -32,7 +33,7 @@ public class DoctorOptionSelector {
                     sortAllAppointments(newID);
                     break;
                 } else if (option.equals("3")) {
-                    groupPatients(doctorID);
+                    groupPatients();
                     break;
                 } else if (option.equals("4")) {
                     System.out.println("Exiting hospital software...");
@@ -59,8 +60,14 @@ public class DoctorOptionSelector {
         System.out.println();
     }
 
-    public void groupPatients(int doctorID) {
-
+    public void groupPatients() {
+        PatientsGrouper patientsGrouper = new PatientsGrouper("appointments.csv", "patients.csv", "doctors.csv");
+        Map<String, List<Patient>> groupedPatients = patientsGrouper.getGroupedPatients();
+        for (Map.Entry<String, List<Patient>> entry : groupedPatients.entrySet()) {
+            System.out.println("Doctor: " + entry.getKey());
+            System.out.println("Patients: " + entry.getValue());
+            System.out.println("------------------------");
+        }
     }
 
     private int changeDoctorID(int doctorID) {
