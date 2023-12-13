@@ -13,7 +13,8 @@ public class HospitalMenu {
         String userRole = RoleSelector.selectRole();
         if (userRole.equalsIgnoreCase("patient")) {
             System.out.println("You entered as patient.");
-            EntryAsPatient.Entry();
+            EntryAsPatient entryAsPatient = new EntryAsPatient(this.appointmentFileName, this.doctorFileName, this.patientFileName);
+            entryAsPatient.Entry();
         } else if (userRole.equalsIgnoreCase("doctor")) {
             System.out.println("You entered as doctor.");
             EntryAsDoctor entryAsDoctor = new EntryAsDoctor(this.appointmentFileName, this.doctorFileName, this.patientFileName);

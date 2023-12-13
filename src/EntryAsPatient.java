@@ -2,13 +2,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EntryAsPatient {
-    public static void Entry() {
+    private String appointmentFileName;
+    private String doctorFileName;
+    private String patientFileName;
+
+    public EntryAsPatient(String appointmentFileName, String doctorFileName, String patientFileName) {
+        this.appointmentFileName = appointmentFileName;
+        this.doctorFileName = doctorFileName;
+        this.patientFileName = patientFileName;
+    }
+    public void Entry() {
         System.out.println("Please enter your patient ID: ");
         Scanner sc = new Scanner(System.in);
         int patientID = getPatientID(sc);
         System.out.println("Please enter your first name(use Capital letter): ");
         String patientFirstName = sc.next();
-        PatientOptionSelector optionSelector = new PatientOptionSelector();
+        PatientOptionSelector optionSelector =
+                new PatientOptionSelector(this.appointmentFileName, this.doctorFileName, this.patientFileName);
         if (isPatientExisting(patientID, patientFirstName)) {
             optionSelector.selectOption(patientID);
         } else {
