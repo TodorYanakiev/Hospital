@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DoctorOptionSelector {
@@ -32,7 +33,7 @@ public class DoctorOptionSelector {
                     sortAllAppointments(newID);
                     break;
                 } else if (option.equals("3")) {
-                    groupPatients(doctorID);
+                    groupPatients();
                     break;
                 } else if (option.equals("4")) {
                     System.out.println("Exiting hospital software...");
@@ -59,8 +60,9 @@ public class DoctorOptionSelector {
         System.out.println();
     }
 
-    public void groupPatients(int doctorID) {
-
+    public void groupPatients() {
+        PatientsGrouper grouper = new PatientsGrouper(this.appointmentFileName,this.patientFileName,this.doctorFileName);
+        grouper.printGroupedPatients();
     }
 
     private int changeDoctorID(int doctorID) {
