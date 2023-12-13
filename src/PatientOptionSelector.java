@@ -49,8 +49,8 @@ public class PatientOptionSelector {
     }
 
     public void cancelingAppointmentMethod(int patientID) {
-        CancelAppointment cancelAppointment = new CancelAppointment();
-        cancelAppointment.cancelAnAppointment(patientID);
+        CancelAppointment cancelAppointment = new CancelAppointment(appointmentFileName, doctorFileName, patientFileName);
+        cancelAppointment.cancelAnAppointment();
     }
 
     public void visualisingAllAppointmentsForPatientMethod(int patientID) {
