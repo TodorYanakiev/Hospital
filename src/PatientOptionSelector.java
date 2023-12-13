@@ -54,7 +54,7 @@ public class PatientOptionSelector {
     }
 
     public void visualisingAllAppointmentsForPatientMethod(int patientID) {
-        VisualiseAllAppointmentsFoPatient visualiseAllAppointmentsFoPatient = new VisualiseAllAppointmentsFoPatient();
+        VisualiseAllAppointmentsFoPatient visualiseAllAppointmentsFoPatient = new VisualiseAllAppointmentsFoPatient(appointmentFileName, doctorFileName,patientFileName);
         visualiseAllAppointmentsFoPatient.visualizePatientAppointments(patientID);
     }
 
