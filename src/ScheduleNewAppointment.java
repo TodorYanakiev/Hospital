@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class ScheduleNewAppointment {
-    public static void scheduleAppointment(Patient patient) {
+    public void scheduleAppointment(Patient patient) {
         Scanner scan = new Scanner(System.in);
         int doctorID = searchForDoctorId();
         System.out.println("Enter the type of the examination:");

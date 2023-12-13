@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class ChangeDateAndTimeForAppointment {
-    public static void updateAppointmentDateTime(int appointmentId) {
+    public void updateAppointmentDateTime(int appointmentId) {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {

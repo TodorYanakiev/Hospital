@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class CancelAppointment {
     private static final String APPOINTMENTS_FILE = "appointments.csv";
 
-    public static void cancelAppointment(int patientId) {
+    public void cancelAnAppointment(int patientId) {
         Scanner scanner = new Scanner(System.in);
 
         try (BufferedReader br = new BufferedReader(new FileReader(APPOINTMENTS_FILE))) {
