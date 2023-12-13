@@ -13,18 +13,43 @@ public class PatientsGrouper {
         this.doctorFileName = doctorFileName;
     }
 
-    public Map<String, List<Patient>> getGroupedPatients(){
+    public void printGroupedPatients(){
         Scanner sc = new Scanner(System.in);
-        Map<String, List<Patient>> groupedPatientsMap;
         String option = getGroupingOption(sc);
         if (option.equals("1")){
-            groupedPatientsMap = groupPatientsByDoctorName();
+            Map<String, List<Patient>> groupedPatientsMap = groupPatientsByDoctorName();
+            printGroupedPatientsByDoctorName(groupedPatientsMap);
         } else if (option.equals("2")) {
-            groupedPatientsMap = groupPatientsByDoctorSpeciality();
+            Map<String, List<Patient>> groupedPatientsMap = groupPatientsByDoctorSpeciality();
+            printGroupedPatientsByDoctorSpeciality(groupedPatientsMap);
         } else {
-            groupedPatientsMap = groupPatientsByAppointmentDate();
+            Map<LocalDate, List<Patient>> groupedPatientsMap = groupPatientsByAppointmentDate();
+            printGroupedPatientsByAppointmentDate(groupedPatientsMap);
         }
-        return groupedPatientsMap;
+    }
+
+    private void printGroupedPatientsByDoctorName(Map<String, List<Patient>> patientsMap) {
+        for (Map.Entry<String, List<Patient>> entry : patientsMap.entrySet()) {
+            System.out.println("Doctor: " + entry.getKey());
+            System.out.println("Patients: " + entry.getValue());
+            System.out.println("------------------------");
+        }
+    }
+
+    private void printGroupedPatientsByDoctorSpeciality(Map<String, List<Patient>> patientsMap){
+        for (Map.Entry<String, List<Patient>> entry : patientsMap.entrySet()) {
+            System.out.println("Speciality: " + entry.getKey());
+            System.out.println("Patients: " + entry.getValue());
+            System.out.println("------------------------");
+        }
+    }
+
+    private void printGroupedPatientsByAppointmentDate(Map<LocalDate, List<Patient>> patientsMap) {
+        for (Map.Entry<LocalDate, List<Patient>> entry : patientsMap.entrySet()) {
+            System.out.println("Date: " + entry.getKey());
+            System.out.println("Patients: " + entry.getValue());
+            System.out.println("------------------------");
+        }
     }
 
     private Map<String, List<Patient>> groupPatientsByDoctorName() {

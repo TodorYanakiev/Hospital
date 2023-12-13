@@ -61,13 +61,8 @@ public class DoctorOptionSelector {
     }
 
     public void groupPatients() {
-        PatientsGrouper patientsGrouper = new PatientsGrouper("appointments.csv", "patients.csv", "doctors.csv");
-        Map<String, List<Patient>> groupedPatients = patientsGrouper.getGroupedPatients();
-        for (Map.Entry<String, List<Patient>> entry : groupedPatients.entrySet()) {
-            System.out.println("Doctor: " + entry.getKey());
-            System.out.println("Patients: " + entry.getValue());
-            System.out.println("------------------------");
-        }
+        PatientsGrouper grouper = new PatientsGrouper(this.appointmentFileName,this.patientFileName,this.doctorFileName);
+        grouper.printGroupedPatients();
     }
 
     private int changeDoctorID(int doctorID) {
