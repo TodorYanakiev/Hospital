@@ -23,7 +23,7 @@ public class PatientOptionSelector {
                 option = sc.nextLine();
                 while (true) {
                     if (option.equals("1")) {
-                        Patient patient = null;
+                        Patient patient = new Patient(patientID, "", "", 1);
                         schedulingNewAppointmentMethod(patient);
                         break;
                     } else if (option.equals("2")) {
@@ -65,7 +65,7 @@ public class PatientOptionSelector {
     }
 
     public void schedulingNewAppointmentMethod(Patient patient) {
-        ScheduleNewAppointment scheduleNewAppointment = new ScheduleNewAppointment();
+        ScheduleNewAppointment scheduleNewAppointment = new ScheduleNewAppointment(appointmentFileName);
         scheduleNewAppointment.scheduleAppointment(patient);
     }
 }
