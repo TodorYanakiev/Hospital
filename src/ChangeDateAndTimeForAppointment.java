@@ -1,66 +1,99 @@
 import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ChangeDateAndTimeForAppointment {
+    private String appointmentFileName;
+    private String doctorFileName;
+    private String patientFileName;
+
+    public ChangeDateAndTimeForAppointment(String appointmentFileName, String doctorFileName, String patientFileName) {
+        this.appointmentFileName = appointmentFileName;
+        this.doctorFileName = doctorFileName;
+        this.patientFileName = patientFileName;
+    }
     public void updateAppointmentDateTime(int appointmentId) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter appointment ID");
+        int appointmentID = getAppointmentID(sc);
+        while(!isAppointmentExisting(appointmentID)) {
+            System.out.println("Non existing appointment.");
+            System.out.println("Enter appointment ID again: ");
+            appointmentID = getAppointmentID(sc);
+        }
+        System.out.println("Enter new date: ");
+        String date = getDate(sc);
 
-        while (true) {
-            System.out.print("Enter new date (dd-mm-yyyy): ");
-            String newDate = scanner.next();
+        System.out.println("Enter new time: ");
+        String time = getTime(sc);
 
-            System.out.print("Enter new time (hhmm): ");
-            String newTime = scanner.next();
-
-            if (isValidDateTime(newDate, newTime)) {
-                if (updateAppointmentInFile(appointmentId, newDate, newTime)) {
-                    System.out.println("Appointment updated successfully.");
-                    break;
-                } else {
-                    System.out.println("Error updating appointment. Please try again.");
-                }
-            } else {
-                System.out.println("Invalid date or time format. Please enter valid date and time.");
+        CSVReader csvReader = new CSVReader();
+        List<Appointment> appointments = csvReader.readAppointmentList(appointmentFileName);
+        int size = appointments.size();
+        for (int i = 0; i < size; i++) {
+            if (appointments.get(i).getAppointmentID() == appointmentID) {
+                appointments.get(i).setDate(LocalDate.parse(date));
+                appointments.get(i).setTime(Integer.parseInt(time));
             }
         }
-    }
-
-    private static boolean isValidDateTime(String date, String time) {
-        return true;
-    }
-
-    private static boolean updateAppointmentInFile(int appointmentId, String newDate, String newTime) {
         try {
-            File inputFile = new File("appointments.csv");
-            File tempFile = new File("appointments.csv");
-
-            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-                 PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    int currentAppointmentId = Integer.parseInt(parts[0].trim());
-
-                    if (currentAppointmentId == appointmentId) {
-                        parts[3] = newDate;
-                        parts[4] = newTime;
-                        line = String.join(",", parts);
-                    }
-
-                    writer.println(line);
-                }
+            PrintStream printStream = new PrintStream(new File(appointmentFileName));
+            printStream.println("appointment_id, patient_id, type_of_examination, date, time, doctor_id");
+            for (Appointment appointment: appointments) {
+                printStream.println(appointment.getAppointmentID() + "," + appointment.getPatientID() + "," +
+                        appointment.getTypeOfExamination() + "," + appointment.getDate() + "," + appointment.getTime() + "," +
+                        appointment.getDoctorID());
             }
-
-            if (tempFile.renameTo(inputFile)) {
-                return true;
-            } else {
-                System.out.println("Error updating appointment. Please try again.");
-                return false;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
+    }
+    public int getAppointmentID(Scanner sc) {
+        int appointmentId;
+        String textAppointmentID = sc.next();
+        while (true) {
+            if (textAppointmentID.matches("^\\d+$")) {
+                appointmentId = Integer.parseInt(textAppointmentID);
+                break;
+            } else {
+                System.out.println("Invalid input, enter appointmentID again: ");
+                textAppointmentID = sc.next();
+            }
+        }
+        return appointmentId;
+    }
+    private boolean isAppointmentExisting(int appointmentID) {
+        CSVReader csvReader = new CSVReader();
+        List<Appointment> appointments = csvReader.readAppointmentList(appointmentFileName);
+        boolean isAppointmentExisting = appointments.stream().anyMatch(appointment -> appointment.getAppointmentID() == appointmentID);
+        return isAppointmentExisting;
+    }
+
+    private String getDate(Scanner sc) {
+        String date = sc.next();
+        while (true) {
+            if (date.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+                break;
+            } else {
+                System.out.println("Date is in incorrect format, please rewrite it in this format(yyyy-mm-dd): ");
+                date = sc.next();
+            }
+        }
+        return date;
+    }
+
+    private String getTime(Scanner sc) {
+        String time = sc.next();
+        while (true) {
+            if (time.matches("^\\d{4}$")) {
+                break;
+            } else {
+                System.out.println("Time is in incorrect format, please rewrite it in this format(hhmm): ");
+                time = sc.next();
+            }
+        }
+        return time;
     }
 }

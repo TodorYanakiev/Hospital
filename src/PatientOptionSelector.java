@@ -59,7 +59,7 @@ public class PatientOptionSelector {
     }
 
     public void changingDateAndTimeForPatientMethod(int appointmentID) {
-        ChangeDateAndTimeForAppointment changeDateAndTimeForAppointment = new ChangeDateAndTimeForAppointment();
+        ChangeDateAndTimeForAppointment changeDateAndTimeForAppointment = new ChangeDateAndTimeForAppointment(appointmentFileName, doctorFileName, patientFileName);
         changeDateAndTimeForAppointment.updateAppointmentDateTime(appointmentID);
     }
 
