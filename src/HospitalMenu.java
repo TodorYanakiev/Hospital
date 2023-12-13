@@ -1,4 +1,14 @@
 public class HospitalMenu {
+    private String appointmentFileName;
+    private String doctorFileName;
+    private String patientFileName;
+
+    public HospitalMenu(String appointmentFileName, String doctorFileName, String patientFileName) {
+        this.appointmentFileName = appointmentFileName;
+        this.doctorFileName = doctorFileName;
+        this.patientFileName = patientFileName;
+    }
+
     public void startHospital() {
         String userRole = RoleSelector.selectRole();
         if (userRole.equalsIgnoreCase("patient")) {
@@ -6,7 +16,8 @@ public class HospitalMenu {
             EntryAsPatient.Entry();
         } else if (userRole.equalsIgnoreCase("doctor")) {
             System.out.println("You entered as doctor.");
-            EntryAsDoctor.Entry();
+            EntryAsDoctor entryAsDoctor = new EntryAsDoctor(this.appointmentFileName, this.doctorFileName, this.patientFileName);
+            entryAsDoctor.Entry();
         }
     }
 }

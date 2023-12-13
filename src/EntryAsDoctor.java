@@ -2,14 +2,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EntryAsDoctor {
-    public static void Entry() {
+    private String appointmentFileName;
+    private String doctorFileName;
+    private String patientFileName;
+
+    public EntryAsDoctor(String appointmentFileName, String doctorFileName, String patientFileName) {
+        this.appointmentFileName = appointmentFileName;
+        this.doctorFileName = doctorFileName;
+        this.patientFileName = patientFileName;
+    }
+
+    public void Entry() {
         System.out.println("Please enter your doctor ID: ");
         Scanner sc = new Scanner(System.in);
         int doctorID = getDoctorID(sc);
         System.out.println("Please enter your first name: ");
         String doctorFirstName = sc.next();
         DoctorOptionSelector optionSelector =
-                new DoctorOptionSelector("appointments.csv", "doctors.csv", "patients.csv");
+                new DoctorOptionSelector(this.appointmentFileName, this.doctorFileName, this.patientFileName);
         if (isDoctorExisting(doctorID, doctorFirstName)) {
             optionSelector.selectOption(doctorID);
         } else {

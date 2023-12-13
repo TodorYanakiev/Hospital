@@ -61,7 +61,7 @@ public class DoctorOptionSelector {
     }
 
     public void groupPatients() {
-        PatientsGrouper grouper = new PatientsGrouper(this.appointmentFileName,this.patientFileName,this.doctorFileName);
+        PatientsGrouper grouper = new PatientsGrouper(this.appointmentFileName, this.patientFileName, this.doctorFileName);
         grouper.printGroupedPatients();
     }
 
