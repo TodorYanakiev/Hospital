@@ -86,7 +86,7 @@ public class DoctorOptionSelector {
         System.out.println("Enter the new ID:");
         newDoctorID = EntryAsDoctor.getDoctorID(sc);
         CSVReader reader = new CSVReader();
-        List<Doctor> doctorList = reader.readDoctorList("doctors.csv");
+        List<Doctor> doctorList = reader.readDoctorList(this.doctorFileName);
         boolean isDoctorInTheList = doctorList.stream().anyMatch(doctor -> doctor.getDoctorID() == newDoctorID);
         if (isDoctorInTheList) {
             return newDoctorID;

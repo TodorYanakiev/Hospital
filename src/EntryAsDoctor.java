@@ -48,9 +48,9 @@ public class EntryAsDoctor {
         return doctorID;
     }
 
-    private static boolean isDoctorExisting(int doctorID, String doctorFirstName) {
+    private boolean isDoctorExisting(int doctorID, String doctorFirstName) {
         CSVReader csvReader = new CSVReader();
-        List<Doctor> doctorList = csvReader.readDoctorList("doctors.csv");
+        List<Doctor> doctorList = csvReader.readDoctorList(this.doctorFileName);
         for (Doctor doctor : doctorList) {
             if (doctor.getDoctorID() == doctorID && doctor.getFirstName().equalsIgnoreCase(doctorFirstName))
                 return true;

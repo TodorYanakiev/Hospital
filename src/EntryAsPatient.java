@@ -47,9 +47,9 @@ public class EntryAsPatient {
         return patientID;
     }
 
-    private static boolean isPatientExisting(int patientID, String patientFirstName) {
+    private boolean isPatientExisting(int patientID, String patientFirstName) {
         CSVReader csvReader = new CSVReader();
-        List<Patient> patientList = csvReader.readPatientList("patients.csv");
+        List<Patient> patientList = csvReader.readPatientList(this.patientFileName);
         for (Patient patient : patientList) {
             if (patient.getPatientID() == patientID && patient.getFirstName().equals(patientFirstName)) return true;
         }

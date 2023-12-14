@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class ScheduleNewAppointment {
     private String appointmentsFileName;
+    private String doctorsFileName;
 
-    public ScheduleNewAppointment(String appointmentsFileName) {
+    public ScheduleNewAppointment(String appointmentsFileName,String doctorsFileName) {
         this.appointmentsFileName = appointmentsFileName;
+        this.doctorsFileName = doctorsFileName;
     }
 
     public void scheduleAppointment(Patient patient) {
@@ -49,7 +51,7 @@ public class ScheduleNewAppointment {
 
     private boolean isDoctorExisting(int doctorID) {
         CSVReader csvReader = new CSVReader();
-        List<Doctor> doctorList = csvReader.readDoctorList("doctors.csv");
+        List<Doctor> doctorList = csvReader.readDoctorList(this.doctorsFileName);
         for (Doctor doctor : doctorList) {
             if (doctor.getDoctorID() == doctorID) return true;
         }
