@@ -64,7 +64,7 @@ public class PatientOptionSelector {
     }
 
     public void schedulingNewAppointmentMethod(Patient patient) {
-        ScheduleNewAppointment scheduleNewAppointment = new ScheduleNewAppointment(appointmentFileName);
+        ScheduleNewAppointment scheduleNewAppointment = new ScheduleNewAppointment(appointmentFileName,doctorFileName);
         scheduleNewAppointment.scheduleAppointment(patient);
     }
     public int getAppointmentID(Scanner sc) {
